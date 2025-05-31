@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Suluhisho is a charity supporting sustainable development in Kenya through education, healthcare, and community projects." />
+  <title>Suluhisho Charity</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    :root {
+      --bg-color: #414242;
+      --text-color: #f0f0f0;
+      --header-bg: rgba(0, 0, 0, 0.5);
+      --nav-bg: #333;
+      --nav-hover: #555;
+      --contact-bg: #3d3d3d;
+      --footer-bg: #333;
+    }
+
+    body.light-mode {
+      --bg-color: #f9f9f9;
+      --text-color: #111;
+      --header-bg: rgba(255, 255, 255, 0.7);
+      --nav-bg: #ddd;
+      --nav-hover: #bbb;
+      --contact-bg: #f1f1f1;
+      --footer-bg: #ddd;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      position: relative;
+      background: url('header-bg.jpg') center center / cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--header-bg);
+      z-index: 1;
+      transition: background 0.3s;
+    }
+
+    .logo {
+      max-width: 150px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .toggle-container {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      z-index: 3;
+    }
+
+    .toggle-button {
+      cursor: pointer;
+      padding: 8px 12px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid #fff;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1.2em;
+      transition: background-color 0.3s, color 0.3s;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.light-mode .toggle-button {
+      background-color: rgba(0, 0, 0, 0.2);
+      color: #111;
+      border-color: #333;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: var(--nav-bg);
+      transition: background-color 0.3s;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      text-align: center;
+      flex: 1 1 auto;
+    }
+
+    body.light-mode nav a {
+      color: #000;
+    }
+
+    nav a:hover {
+      background-color: var(--nav-hover);
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      background-color: #ccc;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .contact {
+      background-color: var(--contact-bg);
+      padding: 20px;
+      text-align: center;
+      margin: 20px auto;
+      max-width: 800px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    footer {
+      background-color: var(--footer-bg);
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      transition: background-color 0.3s;
+    }
+
+    body.light-mode footer {
+      color: #000;
+    }
+
+    .donate-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 25px;
+      margin-top: 10px;
+      font-size: 1.2em;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .donate-button:hover {
+      background-color: #45a049;
+    }
+
+    #lightboxOverlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #lightboxOverlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 15px black;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    body.light-mode #scrollTopBtn {
+      background: #111;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+        padding: 0 10px;
+      }
+
+      nav a {
+        flex: 1 0 100%;
+        padding: 12px;
+      }
+
+      .donate-button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .gallery img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="toggle-container">
+    <button class="toggle-button" onclick="toggleMode()" id="modeToggle">🌙</button>
+  </div>
+  <img src="suluhisho-logo.jpeg" alt="Suluhisho Logo" class="logo" />
+  <h1>Welcome to Suluhisho Charity</h1>
+</header>
+
+<nav>
+  <a href="#about">About Us</a>
+  <a href="projects.html">More Projects</a>
+  <a href="volunteer.html">Volunteer</a>
+  <a href="#donate">Donate</a>
+  <a href="#contact">Contact Us</a>
+</nav>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>Suluhisho is a charity based in Australia and Kenya focused on sustainable, socially and environmentally responsible community development projects.</p>
+  <p>Our work includes a children's home for orphaned and abandoned children, agricultural programs for sustainable food and employment, and fair trade initiatives that empower local artists.</p>
+  <p>We aim to begin building a school and medical centre and invite you to get involved through our volunteer program.</p>
+</section>
+
+<section id="projects">
+  <h2>Our Projects</h2>
+  <p>Learn more about our children's home, agricultural programs, fair trade initiatives, and more.</p>
+  <div class="gallery">
+    <img src="children.jpg" alt="Children's Home" />
+    <img src="agric 2.jpg" alt="Agricultural Program" />
+    <img src="art.jpg" alt="Fair Trade Crafts Display" />
+  </div>
+</section>
+
+<section id="volunteer">
+  <h2>Volunteer</h2>
+  <p>Join us and make a difference by volunteering with Suluhisho.</p>
+  <div class="gallery">
+    <img src="treessss.jpg" alt="Volunteers Planting Trees" />
+    <img src="community work.jpg" alt="Community Work" />
+    <img src="kids with vol.jpg" alt="Volunteers with Kids" />
+  </div>
+</section>
+
+<section id="donate">
+  <h2>Donate</h2>
+  <p>Support our cause by making a donation today.</p>
+  <a href="https://donations.rawcs.com.au/78-2012-13" target="_blank" class="donate-button">Donate Now</a>
+</section>
+
+<div class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <p><strong>Phone:</strong> +254 715 669190</p>
+  <p><strong>Email:</strong> <a href="mailto:jjojwang@hotmail.com" style="color: #4CAF50;">suluhishocharity@gmail.com</a></p>
+  <div class="social-icons" style="margin-top: 10px;">
+    <a href="https://www.facebook.com/share/16fKPPzxaR/?mibextid=wwXIfr" target="_blank">
+      <img src="icons/facebook-icon.png" alt="Facebook" style="width: 32px; height: 32px;" />
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Suluhisho Charity</p>
+</footer>
+
+<div id="lightboxOverlay">
+  <img src="" alt="Expanded image" />
+</div>
+
+<button id="scrollTopBtn" title="Back to top">↑</button>
+
+<script>
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  const lightboxOverlay = document.getElementById('lightboxOverlay');
+  const lightboxImg = lightboxOverlay.querySelector('img');
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxOverlay.style.display = 'flex';
+    });
+  });
+  lightboxOverlay.addEventListener('click', () => {
+    lightboxOverlay.style.display = 'none';
+  });
+
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.style.display = 'flex';
+    } else {
+      scrollTopBtn.style.display = 'none';
+    }
+  });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  const modeToggle = document.getElementById('modeToggle');
+  function setMode(mode) {
+    if (mode === 'dark') {
+      document.body.classList.remove('light-mode');
+      modeToggle.textContent = '🌙';
+      localStorage.setItem('suluhisho-mode', 'dark');
+    } else {
+      document.body.classList.add('light-mode');
+      modeToggle.textContent = '☀️';
+      localStorage.setItem('suluhisho-mode', 'light');
+    }
+  }
+
+  function toggleMode() {
+    if (document.body.classList.contains('light-mode')) {
+      setMode('dark');
+    } else {
+      setMode('light');
+    }
+  }
+
+  const savedMode = localStorage.getItem('suluhisho-mode') || 'dark';
+  setMode(savedMode);
+</script>
+
+</body>
+</html>

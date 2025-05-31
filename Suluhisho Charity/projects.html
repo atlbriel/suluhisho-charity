@@ -1,0 +1,391 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suluhisho Charity - Projects</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background-color: #414242;
+      color: #f0f0f0;
+    }
+    header {
+      background-color: #4CAF50;
+      text-align: center;
+      padding: 1em 0;
+      color: white;
+    }
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 15px;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover,
+    nav a.active {
+      background-color: #4CAF50;
+    }
+
+    .project-nav {
+      background-color: #555;
+      padding: 10px 0;
+      text-align: center;
+      position: sticky;
+      top: 50px;
+      z-index: 9;
+    }
+    .project-nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      background-color: #666;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+    .project-nav a:hover {
+      background-color: #4CAF50;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .project-item {
+      background: #3d3d3d;
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .project-item h3 {
+      margin-top: 0;
+    }
+
+    .media-container {
+      margin: 15px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+    .media-container img, 
+    .media-container video {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .media-container img:hover, 
+    .media-container video:hover {
+      transform: scale(1.05);
+    }
+
+    .caption {
+      font-size: 1.1em;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      margin-top: 40px;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 100;
+      transition: background-color 0.3s ease;
+    }
+    #backToTop:hover {
+      background-color: #388E3C;
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+      display: none;
+    }
+    #lightbox-content img,
+    #lightbox-content video {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      z-index: 10000;
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5em;
+        padding: 0 10px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 5px 0;
+        width: 90%;
+        text-align: center;
+      }
+
+      .project-nav {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .project-nav a {
+        width: 90%;
+        margin: 5px auto;
+        text-align: center;
+        background-color: #666;
+      }
+
+      main {
+        padding: 0 10px;
+      }
+
+      .caption {
+        font-size: 1em;
+      }
+
+      .project-item {
+        padding: 15px;
+      }
+
+      .media-container {
+        grid-template-columns: 1fr;
+      }
+
+      .media-container img,
+      .media-container video {
+        aspect-ratio: 4 / 3;
+      }
+
+      #backToTop {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 14px;
+        font-size: 18px;
+      }
+
+      #lightbox-content img,
+      #lightbox-content video {
+        max-width: 95vw;
+        max-height: 80vh;
+      }
+    }
+
+    @media (min-width: 601px) and (max-width: 900px) {
+      nav {
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      .media-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+
+      .caption {
+        font-size: 1.05em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Suluhisho Charity - Our Projects</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="projects.html" class="active">Projects</a>
+  <a href="volunteer.html">Volunteer</a>
+  <a href="index.html#donate">Donate</a>
+  <a href="index.html#contact">Contact Us</a>
+</nav>
+
+<div class="project-nav">
+  <a href="#childrens-home">Children's Home</a>
+  <a href="#agricultural-program">Agricultural Program</a>
+  <a href="#fair-trade-crafts">Fair Trade Crafts</a>
+</div>
+
+<main>
+  <section class="project-item" id="childrens-home">
+    <h3>Children's Home</h3>
+    <div class="media-container">
+      <img src="children.jpg" alt="Children playing at the home" loading="lazy" />
+      <img src="child.jpg" alt="Children playing at the home" loading="lazy" />
+      <img src="child 1.jpg" alt="Children playing at the home" loading="lazy" />
+      <img src="child2.jpg" alt="Children playing at the home" loading="lazy" />
+      <img src="child 3.jpg" alt="Children playing at the home" loading="lazy" />
+      <img src="child 7.jpg" alt="Children playing at the home" loading="lazy" />
+      <img src="child 8.jpg" alt="Children playing at the home" loading="lazy" />
+      <img src="child 9.jpg" alt="Children playing at the home" loading="lazy" />
+    </div>
+    <p class="caption">
+      Our children's home supports orphaned and abandoned children, providing shelter, education, and hope for a better future.
+    </p>
+  </section>
+
+  <section class="project-item" id="agricultural-program">
+    <h3>Agricultural Program</h3>
+    <div class="media-container">
+      <video controls preload="metadata" muted>
+        <source src="farm.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <video controls preload="metadata" muted>
+        <source src="foodsecurity.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p class="caption">
+      Sustainable agriculture projects empowering the local communities with skills, employment, and food security.
+    </p>
+  </section>
+
+  <section class="project-item" id="fair-trade-crafts">
+    <h3>Fair Trade Crafts</h3>
+    <div class="media-container">
+      <img src="art.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="arty.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art1.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art2.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art3.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art4.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art5.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art6.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art7.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art8.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art9.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+      <img src="art 10.jpg" alt="Fair Trade crafts on display" loading="lazy" />
+    </div>
+    <p class="caption">
+      Showcasing and promoting Kenyan artisans to access international markets and receive fair prices for their work.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Suluhisho Charity</p>
+</footer>
+
+<button id="backToTop" title="Back to top">&#8679;</button>
+
+<div id="lightbox">
+  <span id="lightbox-close">&times;</span>
+  <div id="lightbox-content"></div>
+</div>
+
+<script>
+  const backToTopBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxContent = document.getElementById("lightbox-content");
+  const lightboxClose = document.getElementById("lightbox-close");
+
+  document.querySelectorAll(".media-container img, .media-container video").forEach(media => {
+    media.addEventListener("click", () => {
+      const clone = media.cloneNode(true);
+      if (clone.tagName.toLowerCase() === "video") {
+        clone.setAttribute("controls", true);
+        clone.currentTime = 0;
+        clone.muted = false;
+        clone.autoplay = true;
+      }
+      lightboxContent.innerHTML = "";
+      lightboxContent.appendChild(clone);
+      lightbox.style.display = "flex";
+    });
+  });
+
+  lightboxClose.onclick = () => {
+    lightbox.style.display = "none";
+    lightboxContent.innerHTML = "";
+  };
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      lightbox.style.display = "none";
+      lightboxContent.innerHTML = "";
+    }
+  });
+
+  lightbox.onclick = (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+      lightboxContent.innerHTML = "";
+    }
+  };
+</script>
+
+</body>
+</html>
