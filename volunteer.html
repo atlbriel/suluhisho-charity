@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suluhisho Charity - Volunteer</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Lightbox2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background-color: #414242;
+      color: #f0f0f0;
+      font-size: 1rem;
+    }
+
+    header {
+      background-color: #4CAF50;
+      text-align: center;
+      padding: 1em 0;
+      color: white;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 15px;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #4CAF50;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .project-item {
+      background: #3d3d3d;
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .media-container {
+      margin: 15px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    figure img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+      display: block;
+    }
+
+    figure img:hover {
+      transform: scale(1.05);
+    }
+
+    figure figcaption {
+      margin-top: 6px;
+      font-size: 0.9em;
+      color: #ccc;
+      text-align: center;
+      user-select: none;
+    }
+
+    .caption {
+      font-size: 1.1em;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: none;
+      background-color: #f8f8f8;
+      color: #000;
+    }
+
+    form button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #388E3C;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      margin-top: 40px;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 100;
+    }
+
+    @media (max-width: 600px) {
+      .media-container {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 5px 0;
+        width: 90%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Suluhisho Charity - Volunteer</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="volunteer.html" class="active">Volunteer</a>
+  <a href="index.html#donate">Donate</a>
+  <a href="index.html#contact">Contact Us</a>
+</nav>
+
+<main>
+  <section id="volunteer-section">
+    <h3>Volunteer Stories</h3>
+    <div class="media-container">
+      <figure>
+        <a href="treessss.jpg" data-lightbox="volunteer-gallery" data-title="Volunteers planting trees for reforestation">
+          <img src="treessss.jpg" alt="Volunteers planting trees" loading="lazy" />
+        </a>
+        <figcaption>Volunteers planting trees for reforestation</figcaption>
+      </figure>
+      <figure>
+        <a href="community work.jpg" data-lightbox="volunteer-gallery" data-title="Community clean-up event in the local village">
+          <img src="community work.jpg" alt="Community clean-up event" loading="lazy" />
+        </a>
+        <figcaption>Community clean-up event in the local village</figcaption>
+      </figure>
+      <figure>
+        <a href="kids with vol.jpg" data-lightbox="volunteer-gallery" data-title="Volunteers teaching and playing with children">
+          <img src="kids with vol.jpg" alt="Volunteers with children" loading="lazy" />
+        </a>
+        <figcaption>Volunteers with children</figcaption>
+      </figure>
+      <figure>
+        <a href="voll10.jpg" data-lightbox="volunteer-gallery" data-title="Volunteer helping distribute supplies">
+          <img src="voll10.jpg" alt="Distributing supplies" loading="lazy" />
+        </a>
+        <figcaption>Volunteers helping distribute supplies</figcaption>
+      </figure>
+      <figure>
+        <a href="voll101.jpg" data-lightbox="volunteer-gallery" data-title="Working together to build a better future">
+          <img src="voll101.jpg" alt="Volunteers building together" loading="lazy" />
+        </a>
+        <figcaption>Working together to build a better future</figcaption>
+      </figure>
+      <figure>
+        <a href="voll11.jpg" data-lightbox="volunteer-gallery" data-title="Volunteers enjoying a break during the day">
+          <img src="voll11.jpg" alt="Volunteers resting" loading="lazy" />
+        </a>
+        <figcaption>Volunteers enjoying a break during the day</figcaption>
+      </figure>
+      <figure>
+        <a href="voll12.jpg" data-lightbox="volunteer-gallery" data-title="Teamwork in action during a clean-up">
+          <img src="voll12.jpg" alt="Team clean-up effort" loading="lazy" />
+        </a>
+        <figcaption>Teamwork in action during a clean-up</figcaption>
+      </figure>
+      <figure>
+        <a href="voll13.jpg" data-lightbox="volunteer-gallery" data-title="Sharing laughter and joy with the community">
+          <img src="voll13.jpg" alt="Joyful moment with community" loading="lazy" />
+        </a>
+        <figcaption>Sharing laughter and joy with the community</figcaption>
+      </figure>
+      <figure>
+        <a href="voll1.jpg" data-lightbox="volunteer-gallery" data-title="Volunteer assisting children in class activities">
+          <img src="voll1.jpg" alt="Helping children in class" loading="lazy" />
+        </a>
+        <figcaption>Volunteer assisting in contributing activities</figcaption>
+      </figure>
+      <figure>
+        <a href="voll2.jpg" data-lightbox="volunteer-gallery" data-title="Volunteers working on site infrastructure">
+          <img src="voll2.jpg" alt="Infrastructure project" loading="lazy" />
+        </a>
+        <figcaption>Volunteers being granted after a fulfilling volunteer day</figcaption>
+      </figure>
+      <figure>
+        <a href="voll4.jpg" data-lightbox="volunteer-gallery" data-title="Guiding children through play-based learning">
+          <img src="voll4.jpg" alt="Play-based learning" loading="lazy" />
+        </a>
+        <figcaption>Group effort in planting vegetables</figcaption>
+      </figure>
+      <figure>
+        <a href="voll3.jpg" data-lightbox="volunteer-gallery" data-title="Group effort in planting vegetables">
+          <img src="voll3.jpg" alt="Planting vegetables together" loading="lazy" />
+        </a>
+        <figcaption>Group effort in food contibution</figcaption>
+      </figure>
+      <figure>
+        <a href="voll5.jpg" data-lightbox="volunteer-gallery" data-title="Final group photo after a fulfilling volunteer day">
+          <img src="voll5.jpg" alt="Group photo" loading="lazy" />
+        </a>
+        <figcaption>Final group photo after a fulfilling volunteer day</figcaption>
+      </figure>
+    </div>
+    <p class="caption">
+      Meet the incredible volunteers who dedicate their time and passion to making a difference in our communities.
+    </p>
+  </section>
+
+  <section id="volunteer-signup" style="margin-top: 60px;">
+    <h3>Join as a Volunteer</h3>
+    <p class="caption">Fill out the form below if you'd like to volunteer with Suluhisho Charity. We'd love to hear from you!</p>
+
+    <form action="https://formspree.io/f/xrbkzpgk" method="POST">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" />
+
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" required />
+
+      <label for="message">Why do you want to volunteer?</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Suluhisho Charity</p>
+</footer>
+
+<button id="backToTop" title="Back to top">&#8679;</button>
+
+<!-- Lightbox2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+
+<script>
+  const backToTopBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
